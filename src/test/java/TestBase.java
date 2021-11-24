@@ -11,14 +11,15 @@ public class TestBase {
     WebDriver driver;
 
     @BeforeAll
-    static void setupClass() {
+    static void setDriver(){
         WebDriverManager.chromedriver().setup();
     }
-
     @BeforeEach
     void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--incognito");
         driver = new ChromeDriver(options);
     }
 
